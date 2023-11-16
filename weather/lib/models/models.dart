@@ -1,6 +1,6 @@
 class WeatherModel {
   String location;
-  String updatedAt;
+  DateTime updatedAt;
   String image;
   double avgTemp;
   double maxTemp;
@@ -17,8 +17,8 @@ class WeatherModel {
       required this.status});
 
   factory WeatherModel.fromJson(json) => WeatherModel(
-      location: json["location"]["name"],
-      updatedAt: json["current"]["last_updated"],
+      location: json['location']['name'],
+      updatedAt: DateTime.parse(json["current"]["last_updated"]),
       image: json['forecast']["forecastday"][0]["day"]["condition"]["icon"],
       avgTemp: json['forecast']["forecastday"][0]["day"]["avgtemp_c"],
       maxTemp: json['forecast']["forecastday"][0]["day"]["maxtemp_c"],
